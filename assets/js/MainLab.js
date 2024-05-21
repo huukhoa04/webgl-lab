@@ -1,5 +1,24 @@
 /*============= Creating a canvas =================*/
+document.addEventListener('DOMContentLoaded', function(){
+   Reset();
+});
 
+
+Reset = function(){
+   document.getElementById('T__xVal').value = 0;
+   document.getElementById('T__yVal').value = 0;
+   document.getElementById('T__zVal').value = 0;
+
+   document.getElementById('S__xVal').value = 1;
+   document.getElementById('S__yVal').value = 1;
+   document.getElementById('S__zVal').value = 1;
+
+   document.getElementById('R__xVal').value = 0;
+   document.getElementById('R__yVal').value = 0;
+   document.getElementById('R__zVal').value = 0;
+   document.getElementById('out__val').value.clear;
+   Draw();
+}
 
 Draw = function(){
    document.getElementById('holder__1').innerHTML = '';
@@ -153,9 +172,10 @@ Draw = function(){
       var proj_matrix = get_projection(40, canvas.width/canvas.height, 1, 100);
       var mov_matrix = [1,0,0,0, 0,1,0,0, 0,0,1,0, Tx,Ty,Tz,1];
       var view_matrix = [Sx,0,0,0, 0,Sy,0,0, 0,0,Sz,0, 0,0,0,1];
-      
+      // console.log('translate: ' + mov_matrix);
+      // console.log('scale: ' + view_matrix);
       // translating z
-      view_matrix[14] = view_matrix[14]-6;//zoom
+      view_matrix[14] = view_matrix[14]-10;//zoom
       
       /*==================== Rotation ====================*/
       
@@ -203,7 +223,32 @@ Draw = function(){
       
       /*================= Drawing ===========================*/
       var time_old = 0;
-      
+      function multiplyMatrices(a, b) {
+         var result = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
+         for (var i = 0; i < 4; i++) {
+           for (var j = 0; j < 4; j++) {
+             for (var k = 0; k < 4; k++) {
+               result[i * 4 + j] += a[i * 4 + k] * b[k * 4 + j];
+               result[i * 4 + j] = Number((result[i * 4 + j]).toFixed(2));
+             }
+           }
+         }
+         return result;
+       }
+       function matrixToString(matrix) {
+         var str = "";
+         for (var i = 0; i < 4; i++) {
+           str += "[";
+           for (var j = 0; j < 4; j++) {
+             str += matrix[i * 4 + j] + (j < 3 ? ", " : "");
+           }
+           str += "]\n"; // Add a newline after each row
+         }
+         return str.slice(0, -2) + "]"; // Remove the trailing comma and newline
+       }
+       // ... your existing code ...
+       
+       
       
       var animate = function() {
       
@@ -211,7 +256,8 @@ Draw = function(){
          rotateZ(mov_matrix, Rx);//time
          rotateY(mov_matrix, Ry);
          rotateX(mov_matrix, Rz);
-         
+         var final_matrix = multiplyMatrices(proj_matrix, multiplyMatrices(mov_matrix, view_matrix));
+         document.getElementById('out__val').value = matrixToString(final_matrix);
       
          gl.enable(gl.DEPTH_TEST);
          gl.depthFunc(gl.LEQUAL);
@@ -226,7 +272,7 @@ Draw = function(){
          gl.bindBuffer(gl.ELEMENT_ARRAY_BUFFER, index_buffer);
       
          gl.drawElements(gl.TRIANGLES, indices.length, gl.UNSIGNED_SHORT, 0);
-         document.getElementById('out__val').textContent = Pmatrix;
+         document.getElementById('out__val').textContent = Pmatrix.value;
          // window.requestAnimationFrame(animate);
       }
       animate();

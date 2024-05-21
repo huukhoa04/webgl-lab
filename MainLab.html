@@ -11,7 +11,7 @@
     <title>Lab</title>
 </head>
 <body>
-    <div class="canvas__holder" id="holder__1">
+    <div class="canvas__holder" style="z-index: 999;" id="holder__1">
         <canvas width = "500" height = "500" id="my_Canvas"></canvas>
     </div>
     <div class="data__holder">
@@ -19,6 +19,8 @@
             <span>Độ dài cạnh lập phương</span>
             <input type="text" name="side" id="side__value">
             <button class="__main--btn" onclick="Draw()">Vẽ</button>
+            <button class="__main--btn" onclick="Reset()">Reset</button>
+
         </div>
         <div class="output_matr">
             <div>output ma trận</div>
@@ -30,17 +32,17 @@
                 <div class="value__holder">
                     <div class="component">
                         <label for="Tx_value">x</label>
-                        <input onchange="Draw()" type="range" name="Tx_value" id="T__xVal" min="-5.00" max="5.00" value="0.85">
+                        <input onmouseup="Draw()" type="range" name="Tx_value" id="T__xVal" min="-5.00" max="5.00" step="0.1" value="0.85">
                         <div class="cur__value" id="__Tx">xxx</div>
                     </div>
                     <div class="component">
                         <label for="Ty_value">y</label>
-                        <input onchange="Draw()" type="range" name="Ty_value" id="T__yVal" min="-5.00" max="5.00" value="0.85">
+                        <input onmouseup="Draw()" type="range" name="Ty_value" id="T__yVal" min="-5.00" max="5.00" step="0.1" value="0.85">
                         <div class="cur__value" id="__Ty">xxx</div>
                     </div>
                     <div class="component">
                         <label for="Tz_value">z</label>
-                        <input onchange="Draw()" type="range" name="Tz_value" id="T__zVal" min="-5.00" max="5.00" value="0.85">
+                        <input onmouseup="Draw()" type="range" name="Tz_value" id="T__zVal" min="-5.00" max="5.00" step="0.1" value="0.85">
                         <div class="cur__value" id="__Tz">xxx</div>
                     </div>
                 </div>
@@ -50,17 +52,17 @@
                 <div class="value__holder">
                     <div class="component">
                         <label for="Sx_value">x</label>
-                        <input onchange="Draw()" type="range" name="Sx_value" id="S__xVal" min="-5.00" max="5.00" value="0.85">
+                        <input onmouseup="Draw()" type="range" name="Sx_value" id="S__xVal" min="-5.00" max="5.00" value="0.85">
                         <div class="cur__value" id="__Sx">xxx</div>
                     </div>
                     <div class="component">
                         <label for="Sy_value">y</label>
-                        <input onchange="Draw()" type="range" name="Sy_value" id="S__yVal" min="-5.00" max="5.00" value="0.85">
+                        <input onmouseup="Draw()" type="range" name="Sy_value" id="S__yVal" min="-5.00" max="5.00" value="0.85">
                         <div class="cur__value" id="__Sy">xxx</div>
                     </div>
                     <div class="component">
                         <label for="Sz_value">z</label>
-                        <input onchange="Draw()" type="range" name="Sz_value" id="S__zVal" min="-5.00" max="5.00" value="0.85">
+                        <input onmouseup="Draw()" type="range" name="Sz_value" id="S__zVal" min="-5.00" max="5.00" value="0.85">
                         <div class="cur__value" id="__Sz">xxx</div>
                     </div>
                 </div>
@@ -70,17 +72,17 @@
                 <div class="value__holder">
                     <div class="component">
                         <label for="Rx_value">x</label>
-                        <input onchange="Draw()" type="range" name="Rx_value" id="R__xVal" min="-180" max="180" value="0">
+                        <input onmouseup="Draw()" type="range" name="Rx_value" id="R__xVal" min="-180" max="180" value="0">
                         <div class="cur__value" id="__Rx">xxx</div>
                     </div>
                     <div class="component">
                         <label for="Ry_value">y</label>
-                        <input onchange="Draw()" type="range" name="Ry_value" id="R__yVal" min="-180" max="180" value="0">
+                        <input onmouseup="Draw()" type="range" name="Ry_value" id="R__yVal" min="-180" max="180" value="0">
                         <div class="cur__value" id="__Ry">xxx</div>
                     </div>
                     <div class="component">
                         <label for="Rz_value">z</label>
-                        <input onchange="Draw()" type="range" name="Rz_value" id="R__zVal" min="-180" max="180" value="0">
+                        <input onmouseup="Draw()" type="range" name="Rz_value" id="R__zVal" min="-180" max="180" value="0">
                         <div class="cur__value" id="__Rz">xxx</div>
                     </div>
                 </div>
