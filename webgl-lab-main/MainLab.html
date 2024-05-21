@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./assets/css/MainLab.css">
+    <link href='https://fonts.googleapis.com/css?family=JetBrains Mono' rel='stylesheet'>
+    <script src="https://cdn.skypack.dev/three@0.129.0/build/three.module.js"></script>
+    <script src="https://cdn.skypack.dev/three@0.129.0/examples/jsm/controls/OrbitControls.js"></script>
+    <script src="https://cdn.skypack.dev/three@0.129.0/examples/jsm/loaders/GLTFLoader.js"></script>
+    <script src="./assets/js/MainLab.js"></script>
+    <title>Lab</title>
+</head>
+<body>
+    <div class="canvas__holder" id="holder__1">
+        <canvas width="500" height="500" id="my_Canvas"></canvas>
+    </div>
+    <div class="data__holder">
+        <div class="cube__value">
+            <span>Độ dài cạnh lập phương</span>
+            <input type="text" name="side" id="side__value">
+            <button class="__main--btn" onclick="Draw()">Vẽ</button>
+        </div>
+        <div class="output_matr">
+            <div>output ma trận</div>
+            <textarea readonly class="__output" name="output" id="out__val"></textarea>
+        </div>
+        <div class="range__holder">
+            <div class="range">
+                <div>Vector tịnh tiến T</div>
+                <div class="value__holder">
+                    <div class="component">
+                        <label for="Tx_value">x</label>
+                        <input onchange="Draw()" type="range" name="Tx_value" id="T__xVal" min="-5.00" max="5.00" value="0.85">
+                        <div class="cur__value" id="__Tx">xxx</div>
+                    </div>
+                    <div class="component">
+                        <label for="Ty_value">y</label>
+                        <input onchange="Draw()" type="range" name="Ty_value" id="T__yVal" min="-5.00" max="5.00" value="0.85">
+                        <div class="cur__value" id="__Ty">xxx</div>
+                    </div>
+                    <div class="component">
+                        <label for="Tz_value">z</label>
+                        <input onchange="Draw()" type="range" name="Tz_value" id="T__zVal" min="-5.00" max="5.00" value="0.85">
+                        <div class="cur__value" id="__Tz">xxx</div>
+                    </div>
+                </div>
+            </div>
+            <div class="range">
+                <div>ScaleS</div>
+                <div class="value__holder">
+                    <div class="component">
+                        <label for="Sx_value">x</label>
+                        <input onchange="Draw()" type="range" name="Sx_value" id="S__xVal" min="-5.00" max="5.00" value="0.85">
+                        <div class="cur__value" id="__Sx">xxx</div>
+                    </div>
+                    <div class="component">
+                        <label for="Sy_value">y</label>
+                        <input onchange="Draw()" type="range" name="Sy_value" id="S__yVal" min="-5.00" max="5.00" value="0.85">
+                        <div class="cur__value" id="__Sy">xxx</div>
+                    </div>
+                    <div class="component">
+                        <label for="Sz_value">z</label>
+                        <input onchange="Draw()" type="range" name="Sz_value" id="S__zVal" min="-5.00" max="5.00" value="0.85">
+                        <div class="cur__value" id="__Sz">xxx</div>
+                    </div>
+                </div>
+            </div>
+            <div class="range">
+                <div>Rotate R</div>
+                <div class="value__holder">
+                    <div class="component">
+                        <label for="Rx_value">x</label>
+                        <input onchange="Draw()" type="range" name="Rx_value" id="R__xVal" min="-180" max="180" value="0">
+                        <div class="cur__value" id="__Rx">xxx</div>
+                    </div>
+                    <div class="component">
+                        <label for="Ry_value">y</label>
+                        <input onchange="Draw()" type="range" name="Ry_value" id="R__yVal" min="-180" max="180" value="0">
+                        <div class="cur__value" id="__Ry">xxx</div>
+                    </div>
+                    <div class="component">
+                        <label for="Rz_value">z</label>
+                        <input onchange="Draw()" type="range" name="Rz_value" id="R__zVal" min="-180" max="180" value="0">
+                        <div class="cur__value" id="__Rz">xxx</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

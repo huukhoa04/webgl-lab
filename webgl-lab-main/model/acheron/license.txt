@@ -1,0 +1,11 @@
+Model Information:
+* title:	Honkai Star Rail Acheron
+* source:	https://sketchfab.com/3d-models/honkai-star-rail-acheron-778da4070e324c518f664b487726a948
+* author:	weilin791 (https://sketchfab.com/chenyulin791)
+
+Model License:
+* license type:	CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
+* requirements:	Author must be credited. Commercial use is allowed.
+
+If you use this 3D model in your project be sure to copy paste this credit wherever you share it:
+This work is based on "Honkai Star Rail Acheron" (https://sketchfab.com/3d-models/honkai-star-rail-acheron-778da4070e324c518f664b487726a948) by weilin791 (https://sketchfab.com/chenyulin791) licensed under CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
