@@ -171,7 +171,11 @@ Draw = function(){
       
       var proj_matrix = get_projection(40, canvas.width/canvas.height, 1, 100);
       var mov_matrix = [1,0,0,0, 0,1,0,0, 0,0,1,0, Tx,Ty,Tz,1];
+      var mov_matrix_1 = [1,0,0,0, 0,1,0,0, 0,0,1,0, Tx,Ty,Tz,1];
+
       var view_matrix = [Sx,0,0,0, 0,Sy,0,0, 0,0,Sz,0, 0,0,0,1];
+      var view_matrix_1 = [Sx,0,0,0, 0,Sy,0,0, 0,0,Sz,0, 0,0,0,1];
+
       // console.log('translate: ' + mov_matrix);
       // console.log('scale: ' + view_matrix);
       // translating z
@@ -191,6 +195,7 @@ Draw = function(){
          m[1]=c*m[1]+s*mv0;
          m[5]=c*m[5]+s*mv4;
          m[9]=c*m[9]+s*mv8;
+         
       }
       
       function rotateX(m, angle) {
@@ -205,6 +210,7 @@ Draw = function(){
          m[2] = m[2]*c+mv1*s;
          m[6] = m[6]*c+mv5*s;
          m[10] = m[10]*c+mv9*s;
+         
       }
       
       function rotateY(m, angle) {
@@ -219,6 +225,7 @@ Draw = function(){
          m[2] = c*m[2]-s*mv0;
          m[6] = c*m[6]-s*mv4;
          m[10] = c*m[10]-s*mv8;
+         
       }
       
       /*================= Drawing ===========================*/
@@ -229,7 +236,7 @@ Draw = function(){
            for (var j = 0; j < 4; j++) {
              for (var k = 0; k < 4; k++) {
                result[i * 4 + j] += a[i * 4 + k] * b[k * 4 + j];
-               result[i * 4 + j] = Number((result[i * 4 + j]).toFixed(2));
+               result[i * 4 + j] = Number((result[i * 4 + j]).toFixed(1));
              }
            }
          }
@@ -257,7 +264,10 @@ Draw = function(){
          rotateY(mov_matrix, Ry);
          rotateX(mov_matrix, Rz);
          var final_matrix = multiplyMatrices(proj_matrix, multiplyMatrices(mov_matrix, view_matrix));
-         document.getElementById('out__val').value = matrixToString(final_matrix);
+         document.getElementById('out__val').value = matrixToString(final_matrix) + 
+         '\n' + 'Tịnh tiến:'  + '\n' + matrixToString(mov_matrix_1) + 
+         '\n' + 'Scale'  + '\n' + matrixToString(view_matrix_1) + 
+         '\n' + 'Rotate'  + '\n' + matrixToString(multiplyMatrices(mov_matrix, view_matrix_1));
       
          gl.enable(gl.DEPTH_TEST);
          gl.depthFunc(gl.LEQUAL);
